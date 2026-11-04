@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.core</groupId>
+  <artifactId>youcredential-core-spi-holder-credential-request</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>linkwallet-holder-credential-request-spi</name>
+  <description>linkwallet-holder-credential-request-spi</description>
+
+  <dependencies>
+<!--    implementation(libs.edc.spi.core)
+    edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>core-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>  
+<!--    testFixturesImplementation(libs.junit.jupiter.api)
+    testFixturesImplementation(libs.edc.junit)
+    testFixturesImplementation(libs.awaitility)  -->
+   </dependencies>     
+</project>

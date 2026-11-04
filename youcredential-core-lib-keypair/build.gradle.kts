@@ -1,3 +1,7 @@
+/*
+ * \core\lib\keypair-lib
+ */
+
 plugins {
     `java-library`
 }

@@ -1,3 +1,7 @@
+/*
+ * \core\lib\accesstoken-lib
+ */
+
 plugins {
     `java-library`
 }

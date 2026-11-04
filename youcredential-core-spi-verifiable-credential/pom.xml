@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.core</groupId>
   <artifactId>youcredential-core-spi-verifiable-credential</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3.0</version>
   <name>linkwallet-verifiable-credential-spi</name>
   <description>linkwallet-verifiable-credential-spi</description>
 
@@ -11,13 +11,13 @@
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-spi-holder-credential-request</artifactId>  
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>  
 <!--    api(project(":spi:participant-context-spi"))-->
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-spi-participant-context</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.3.0</version>
       </dependency>      
 <!--    api(libs.edc.spi.dcp)
     edc-spi-dcp = { module = "org.eclipse.edc:decentralized-claims-spi", version.ref = "edc" }-->

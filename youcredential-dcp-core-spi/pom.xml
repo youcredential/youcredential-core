@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.dcp</groupId>
+<!--  <artifactId>linkwallet-dcp-spi</artifactId>-->
+  <artifactId>youcredential-dcp-core-spi</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>linkwallet-dcp-spi</name>
+  <description>linkwallet-dcp-spi</description>
+  
+  <dependencies>  
+<!--    api(project(":spi:issuerservice:issuerservice-holder-spi"))-->
+      <dependency>
+        <groupId>org.youcredential.issuer</groupId>
+        <artifactId>youcredential-issuer-holder-spi</artifactId> 
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>  
+<!--    api(project(":spi:verifiable-credential-spi"))-->
+      <dependency>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-verifiable-credential</artifactId> 
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>      
+<!--    api(libs.jackson.annotation) // JsonProperty  
+    jackson-annotation = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }-->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>2.20</version>
+      </dependency>
+      
+   </dependencies>     
+</project>

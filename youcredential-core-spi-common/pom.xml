@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.core</groupId>
+  <artifactId>youcredential-core-spi-common</artifactId>
+  <version>0.0.3.0</version>
+  <name>linkwallet-identity-hub-spi</name>
+  <description>linkwallet-identity-hub-spi</description>
+  
+  <dependencies>
+<!--  
+    api(libs.edc.spi.core)
+    api(libs.edc.spi.web) // ServiceResultHandler, etc.
+    api(libs.edc.spi.vc) // VC Constants
+    api(libs.edc.spi.auth)
+    api(project(":spi:participant-context-spi"))
+    implementation(libs.jackson.databind)
+
+    implementation(libs.swagger.jaxrs) {
+        exclude(group = "com.fasterxml.jackson.jaxrs", module = "jackson-jaxrs-json-provider")
+    }  
+-->  
+<!--    api(libs.edc.spi.core)
+    edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>core-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>
+<!--    api(libs.edc.spi.web) // ServiceResultHandler, etc.
+    edc-spi-web = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>web-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>    
+<!--    api(libs.edc.spi.vc) // VC Constants
+    edc-spi-vc = { module = "org.eclipse.edc:verifiable-credentials-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>verifiable-credentials-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>    
+<!--    api(project(":spi:participant-context-spi"))-->
+      <dependency>
+        <groupId>org.youcredential.core</groupId>  
+        <artifactId>youcredential-core-spi-participant-context</artifactId> 
+        <version>0.0.3.0</version>
+      </dependency>    
+<!--    implementation(libs.jackson.databind)
+    jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }-->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.21.0</version>
+      </dependency>
+<!--    implementation(libs.swagger.jaxrs) {
+        exclude(group = "com.fasterxml.jackson.jaxrs", module = "jackson-jaxrs-json-provider")
+    }
+    swagger-jaxrs = { module = "io.swagger.core.v3:swagger-jaxrs2-jakarta", version.ref = "swagger" }-->
+      <dependency>
+        <groupId>io.swagger.core.v3</groupId>
+        <artifactId>swagger-jaxrs2-jakarta</artifactId>
+        <version>2.2.40</version>
+      </dependency>    
+  </dependencies>   
+</project>

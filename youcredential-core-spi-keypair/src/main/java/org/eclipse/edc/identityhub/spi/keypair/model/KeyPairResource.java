@@ -1,0 +1,260 @@
+/*
+ *  Copyright (c) 2024 Metaform Systems, Inc.
+ *
+ *  This program and the accompanying materials are made available under the
+ *  terms of the Apache License, Version 2.0 which is available at
+ *  https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  SPDX-License-Identifier: Apache-2.0
+ *
+ *  Contributors:
+ *       Metaform Systems, Inc. - initial API and implementation
+ *
+ */
+
+package org.eclipse.edc.identityhub.spi.keypair.model;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import org.eclipse.edc.identityhub.spi.participantcontext.model.IdentityHubParticipantContext;
+import org.eclipse.edc.identityhub.spi.participantcontext.model.KeyPairUsage;
+import org.eclipse.edc.participantcontext.spi.types.AbstractParticipantResource;
+import org.eclipse.edc.spi.query.Criterion;
+import org.eclipse.edc.spi.query.QuerySpec;
+import org.eclipse.edc.spi.security.Vault;
+
+import java.time.Duration;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * A {@link KeyPairResource} contains key material for a particular {@link IdentityHubParticipantContext}. The public key is stored in the database in serialized form (JWK or PEM) and the private
+ * key is referenced via an alias, it is actually stored in a {@link Vault}.
+ */
+
+@JsonDeserialize(builder = KeyPairResource.Builder.class)
+public class KeyPairResource extends AbstractParticipantResource {
+    private long timestamp;
+    private String keyId;
+    private String groupName;
+    private String keyContext;
+    private boolean defaultPair;
+    private long useDuration;
+    private long rotationDuration;
+    private String serializedPublicKey;
+    private String privateKeyAlias;
+    private int state;
+    private Set<KeyPairUsage> usage = Set.of();
+
+    private KeyPairResource() {
+    }
+
+    public static QuerySpec.Builder queryById(String id) {
+        return QuerySpec.Builder.newInstance().filter(new Criterion("id", "=", id));
+    }
+
+    public Set<KeyPairUsage> getUsage() {
+        return usage;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    /**
+     * Whether this KeyPair is the default for a {@link IdentityHubParticipantContext}.
+     */
+    public boolean isDefaultPair() {
+        return defaultPair;
+    }
+
+    /**
+     * A String that should be used when referencing this key material in e.g. a JWT.
+     */
+    public String getKeyId() {
+        return keyId;
+    }
+
+    /**
+     * The alias under which the private key is stored in the vault.
+     */
+    public String getPrivateKeyAlias() {
+        return privateKeyAlias;
+    }
+
+    /**
+     * The overall duration this key is still in service (used for verification) after a rotation has been started.
+     */
+    public long getRotationDuration() {
+        return rotationDuration;
+    }
+
+    /**
+     * The public key in JWK or PEM format. Consider using a {@code KeyParserRegistry} to restore the key.
+     */
+    public String getSerializedPublicKey() {
+        return serializedPublicKey;
+    }
+
+    /**
+     * The Epoch Millis when this KeyPair was created.
+     */
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Maximum time (starting from {@link KeyPairResource#getTimestamp()}) this key should be in use.
+     */
+    public long getUseDuration() {
+        return useDuration;
+    }
+
+    /**
+     * The context in which this key resource is to be used, for example this could be "JsonWebKey2020". This value will
+     * be set on the Verification Method's {@code type} field of the participant's DID document
+     *
+     * @return the context in which the key context is to be used.
+     */
+    public String getKeyContext() {
+        return keyContext;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    @JsonIgnore
+    public void rotate(long duration) {
+        state = KeyPairState.ROTATED.code();
+        rotationDuration = duration;
+        defaultPair = false;
+    }
+
+    public void revoke() {
+        state = KeyPairState.REVOKED.code();
+        defaultPair = false;
+    }
+
+    public void activate() {
+        state = KeyPairState.ACTIVATED.code();
+    }
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class Builder extends AbstractParticipantResource.Builder<KeyPairResource, KeyPairResource.Builder> {
+
+        private Builder() {
+            super(new KeyPairResource());
+        }
+
+        @JsonCreator
+        public static Builder newInstance() {
+            return new Builder();
+        }
+
+        public static Builder newCredentialSigning() {
+            return new Builder().usage(KeyPairUsage.CREDENTIAL_SIGNING);
+        }
+
+        public static Builder newPresentationSigning() {
+            return new Builder().usage(KeyPairUsage.PRESENTATION_SIGNING);
+        }
+
+        public static Builder newTokenSigning() {
+            return new Builder().usage(KeyPairUsage.TOKEN_SIGNING);
+        }
+
+        public Builder groupName(String groupName) {
+            entity.groupName = groupName;
+            return this;
+        }
+
+        @Override
+        public Builder self() {
+            return this;
+        }
+
+        @Override
+        public KeyPairResource build() {
+            super.build();
+            Objects.requireNonNull(entity.id);
+            if (entity.usage == null || entity.usage.isEmpty()) {
+                throw new IllegalStateException("KeyPair must have at least one usage"); // backwards compatibility should be handled elsewhere
+            }
+            if (entity.timestamp <= 0) {
+                entity.timestamp = entity.clock.millis();
+            }
+            if (entity.useDuration == 0) {
+                entity.useDuration = Duration.ofDays(6 * 30).toMillis();
+            }
+            return entity;
+        }
+
+        public Builder timestamp(long timestamp) {
+            entity.timestamp = timestamp;
+            return this;
+        }
+
+        public Builder keyId(String keyId) {
+            entity.keyId = keyId;
+            return this;
+        }
+
+        @JsonProperty("defaultPair")
+        public Builder isDefaultPair(boolean isDefaultPair) {
+            entity.defaultPair = isDefaultPair;
+            return this;
+        }
+
+        public Builder useDuration(long useDuration) {
+            entity.useDuration = useDuration;
+            return this;
+        }
+
+        public Builder rotationDuration(long rotationDuration) {
+            entity.rotationDuration = rotationDuration;
+            return this;
+        }
+
+        public Builder serializedPublicKey(String serializedPublicKey) {
+            entity.serializedPublicKey = serializedPublicKey;
+            return this;
+        }
+
+        public Builder privateKeyAlias(String privateKeyAlias) {
+            entity.privateKeyAlias = privateKeyAlias;
+            return this;
+        }
+
+        public Builder state(int state) {
+            entity.state = state;
+            return this;
+        }
+
+        public Builder keyContext(String keyContext) {
+            entity.keyContext = keyContext;
+            return this;
+        }
+
+        public Builder usage(KeyPairUsage... usages) {
+            entity.usage = Set.of(usages);
+            return self();
+        }
+
+        @JsonSetter
+        public Builder usage(Set<KeyPairUsage> usages) {
+            entity.usage = usages;
+            return self();
+        }
+
+        public Builder state(KeyPairState state) {
+            entity.state = state.code();
+            return this;
+        }
+
+    }
+}

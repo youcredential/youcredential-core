@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.linkwallet.dcp</groupId>
+  <artifactId>linkwallet-dcp-core-lib-validation</artifactId>
+  <version>0.0.3.0</version>
+  <name>linkwallet-dcp-validation-lib</name>
+  <description>linkwallet-dcp-validation-lib</description>
+ 
+  <dependencies> 
+<!--    api(libs.edc.spi.jsonld)
+    edc-spi-jsonld = { module = "org.eclipse.edc:json-ld-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>json-ld-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>  
+<!--    api(project(":protocols:dcp:dcp-issuer:dcp-issuer-spi"))-->
+      <dependency>
+        <groupId>org.youcredential.dcp</groupId>
+        <artifactId>youcredential-dcp-core-spi</artifactId>
+        <version>0.0.3.0</version>
+      </dependency>  
+<!--    implementation(libs.edc.lib.validator)
+    edc-lib-validator = { module = "org.eclipse.edc:validator-lib", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>validator-lib</artifactId>
+        <version>0.18.0</version>
+      </dependency>      
+      
+<!--    testImplementation(libs.edc.junit)  
+edc-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>junit</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency> 
+   </dependencies>     
+</project>

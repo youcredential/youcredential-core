@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.core</groupId>
+  <artifactId>youcredential-core-spi-did</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>linkwallet-did-spi</name>
+  <description>linkwallet-did-spi</description>
+
+  <dependencies>   
+<!--      api(libs.edc.spi.identity.did)
+    edc-spi-identity-did = { module = "org.eclipse.edc:identity-did-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>identity-did-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>
+<!--    api(project(":spi:participant-context-spi"))-->
+      <dependency>
+        <groupId>org.youcredential.core</groupId>
+        <artifactId>youcredential-core-spi-participant-context</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+      </dependency>
+      
+<!--    testImplementation(libs.edc.lib.json)
+    edc-lib-json = { module = "org.eclipse.edc:json-lib", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>json-lib</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>        
+      </dependency>   
+<!--    testFixturesImplementation(libs.edc.spi.identity.did)
+    edc-spi-identity-did = { module = "org.eclipse.edc:identity-did-spi", version.ref = "edc" }
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>identity-did-spi</artifactId>
+        <version>0.15.1</version>
+        <scope>test</scope>        
+      </dependency>    -->   
+<!--    testFixturesImplementation(libs.junit.jupiter.api)
+    junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }-->
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>6.0.1</version>
+        <scope>test</scope>        
+      </dependency>      
+ <!--   testFixturesImplementation(libs.edc.junit)
+    edc-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }-->
+       <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>junit</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency>       
+  </dependencies>       
+</project>

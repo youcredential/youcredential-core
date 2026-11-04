@@ -1,3 +1,7 @@
+/*
+ * \core\lib\common-lib
+ */
+
 plugins {
     `java-library`
 }

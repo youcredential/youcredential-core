@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.youcredential.core</groupId>
+  <artifactId>youcredential-core-lib-common</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>linkwallet-common-lib</name>
+  <description>linkwallet-common-lib</description>
+
+  <dependencies>
+<!--    implementation(libs.edc.spi.core)
+    edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>core-spi</artifactId>
+        <version>0.18.0</version>
+      </dependency>      
+<!--    implementation(libs.edc.lib.query)
+    edc-lib-query = { "module" = "org.eclipse.edc:query-lib", version.ref = "edc" }-->
+      <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>query-lib</artifactId>
+        <version>0.18.0</version>
+      </dependency>   
+         
+<!--    testImplementation(libs.edc.junit)
+    edc-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }-->
+       <dependency>
+        <groupId>org.eclipse.edc</groupId>
+        <artifactId>junit</artifactId>
+        <version>0.18.0</version>
+        <scope>test</scope>
+      </dependency>       
+<!--    testImplementation(libs.nimbus.jwt)  
+    nimbus-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbus" }-->
+      <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>10.6</version>
+        <scope>test</scope>
+      </dependency>          
+   </dependencies>     
+</project>

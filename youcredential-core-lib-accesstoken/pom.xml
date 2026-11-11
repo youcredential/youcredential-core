@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.core</groupId>
   <artifactId>youcredential-core-lib-accesstoken</artifactId>
-  <version>0.0.3.0</version>
+  <version>0.0.4.0</version>
   <name>linkwallet-accesstoken-lib</name>
   <description>linkwallet-accesstoken-lib</description>
   
@@ -11,7 +11,7 @@
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-lib-keypair</artifactId> 
-        <version>0.0.3.0</version>
+        <version>0.0.4.0</version>
       </dependency>  
 <!--    api(libs.edc.spi.token)
     edc-spi-token = { module = "org.eclipse.edc:token-spi", version.ref = "edc" }-->

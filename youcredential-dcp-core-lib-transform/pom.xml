@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.dcp</groupId>
   <artifactId>youcredential-dcp-core-lib-transform</artifactId>
-  <version>0.0.3.0</version>
+  <version>0.0.4.0</version>
   <name>dcp-transform-lib</name>
   <description>dcp-transform-lib</description>
 
@@ -18,7 +18,7 @@
       <dependency>
         <groupId>org.youcredential.dcp</groupId>
         <artifactId>youcredential-dcp-core-spi</artifactId> 
-        <version>0.0.3.0</version>
+        <version>0.0.4.0</version>
       </dependency>  
       
 <!--    testImplementation(libs.edc.lib.jsonld)

@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.linkwallet.dcp</groupId>
-  <artifactId>linkwallet-dcp-core-lib-validation</artifactId>
-  <version>0.0.3.0</version>
+  <groupId>org.youcredential.dcp</groupId>
+  <artifactId>youcredential-dcp-core-lib-validation</artifactId>
+  <version>0.0.4.0</version>
   <name>linkwallet-dcp-validation-lib</name>
   <description>linkwallet-dcp-validation-lib</description>
  
@@ -18,7 +18,7 @@
       <dependency>
         <groupId>org.youcredential.dcp</groupId>
         <artifactId>youcredential-dcp-core-spi</artifactId>
-        <version>0.0.3.0</version>
+        <version>0.0.4.0</version>
       </dependency>  
 <!--    implementation(libs.edc.lib.validator)
     edc-lib-validator = { module = "org.eclipse.edc:validator-lib", version.ref = "edc" }-->

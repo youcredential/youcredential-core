@@ -3,7 +3,7 @@
   <groupId>org.youcredential.dcp</groupId>
 <!--  <artifactId>linkwallet-dcp-spi</artifactId>-->
   <artifactId>youcredential-dcp-core-spi</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4.0</version>
   <name>linkwallet-dcp-spi</name>
   <description>linkwallet-dcp-spi</description>
   
@@ -12,13 +12,13 @@
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-spi-holder</artifactId> 
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.4.0</version>
       </dependency>  
 <!--    api(project(":spi:verifiable-credential-spi"))-->
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-spi-verifiable-credential</artifactId> 
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.4.0</version>
       </dependency>      
 <!--    api(libs.jackson.annotation) // JsonProperty  
     jackson-annotation = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }-->

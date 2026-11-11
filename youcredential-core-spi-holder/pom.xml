@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.core</groupId>
   <artifactId>youcredential-core-spi-holder</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4.0</version>
   <name>linkwallet-issuerservice-holder-spi</name>
   <description>linkwallet-issuerservice-holder-spi</description>
   
@@ -18,7 +18,7 @@
       <dependency>
         <groupId>org.youcredential.core</groupId>
         <artifactId>youcredential-core-spi-participant-context</artifactId>
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.4.0</version>
       </dependency>  
 <!--    testFixturesImplementation(libs.edc.junit)
     testFixturesImplementation(libs.junit.jupiter.api)  -->

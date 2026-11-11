@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.youcredential.core</groupId>
   <artifactId>youcredential-core-spi-common</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4.0</version>
   <name>linkwallet-identity-hub-spi</name>
   <description>linkwallet-identity-hub-spi</description>
   
@@ -44,7 +44,7 @@
       <dependency>
         <groupId>org.youcredential.core</groupId>  
         <artifactId>youcredential-core-spi-participant-context</artifactId> 
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.4.0</version>
       </dependency>    
 <!--    implementation(libs.jackson.databind)
     jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }-->
